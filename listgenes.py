@@ -1,4 +1,3 @@
-##ensure correct: start with ATG, 6 starts on ATG goes to TAA.  1 ends on TGA starts ATG
 genome = open('genome.txt', 'r')
 table = open('table.txt', 'r')
 outfile = open('genelist.txt', 'w')
@@ -7,20 +6,23 @@ gene = ''
 genseq = ''
 start = True
 
+#get string of genome
 for line in genome:
 	if '>' not in line:
 		genseq =genseq + (line.lstrip().rstrip())
 
-for line in table: ##deal with first line
+#write new file
+for line in table:
 	newgene = ''
 	gene = ''
-	if start:
+	if start:  ## skip first line
 		start = False
 		continue
 	lineinfo = line.split('\t')
-	outfile.write(lineinfo[7] + '\t')
-	gene = genseq[int(lineinfo[2])-1:int(lineinfo[3])] ##check for off by 1
+	outfile.write(lineinfo[7] + '\t') ## get protein name
+	gene = genseq[int(lineinfo[2])-1:int(lineinfo[3])]
 	
+	#Handle reverse strand
 	if '-' in lineinfo[4]:
 		for letter in gene[::-1]:
 			if letter == 'G':
@@ -34,4 +36,5 @@ for line in table: ##deal with first line
 			newgene = newgene + nletter
 		gene = newgene
 	
+	#write the gene
 	outfile.write(gene + '\n')
