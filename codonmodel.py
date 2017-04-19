@@ -1,6 +1,6 @@
 import math
 
-infile = open('outfile.txt')
+infile = open('genelist.txt')
 output = open('finalCUI.txt', 'w')
 outtable = open('codontable.txt', 'w')
 

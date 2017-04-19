@@ -1,7 +1,7 @@
 ##ensure correct: start with ATG, 6 starts on ATG goes to TAA.  1 ends on TGA starts ATG
 genome = open('genome.txt', 'r')
 table = open('table.txt', 'r')
-outfile = open('outfile.txt', 'w')
+outfile = open('genelist.txt', 'w')
 newgene = ''
 gene = ''
 genseq = ''
